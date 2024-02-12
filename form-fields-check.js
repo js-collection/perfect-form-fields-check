@@ -242,7 +242,7 @@ export const formcorrector = new class FORMCORRECTOR
 						
 							//|| !field.value.match('@') && !field.value.match('.')
 							if ( !isEmpty(field.value) && ! pattern )
-								validity = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(field.value) ? true : false
+								validity = /^\w{3,64}+([\.-]?)*@\w{3,254}+([\.-]?\w+)*(\.\w{2,3})+$/.test(field.value) ? true : false
 						
 						
 						} else if ( istype(field,'url') ) {
