@@ -15,8 +15,7 @@ export const formcorrector = new class FORMCORRECTOR
 	   	//// in case of variants make check for all form and save error
 	   	//// in an array. else, is form by form.
 
-	   	var globalstatus = [] ,
-			isVariantsPage = window.location.href.includes('shop.product.variants.php') ? true : false
+	   	var globalstatus = []
 
 	   	//// now you can start normally...
 
@@ -47,22 +46,9 @@ export const formcorrector = new class FORMCORRECTOR
 		// check fileds
 		function checkfields(form,isClick) {
 
-			let btnsubmit
-
-			if(!isVariantsPage) {
-
-
-				btnsubmit = form.querySelectorAll('*[type=submit]')[0]||false
-
-
-			} else {
-
-
-				btnsubmit = document.querySelectorAll('*[type=submit]').length ?
-							document.querySelectorAll('*[type=submit]')[document.querySelectorAll('*[type=submit]').length-1] :
-							false
-
-			}
+			let btnsubmit = document.querySelectorAll('*[type=submit]').length ?
+					document.querySelectorAll('*[type=submit]')[document.querySelectorAll('*[type=submit]').length-1] :
+					false
 
 			if ( btnsubmit ) {
 
@@ -121,14 +107,14 @@ export const formcorrector = new class FORMCORRECTOR
 						setTimeout(()=>{
 
 							let cleanedtag = field.value.toLowerCase()
-												.replace(/\"/g,'')
-												.replace(/\'/g,'')
-												.replace(/;/g,',')
-												.replace(/-/g,',')
-												.replace(/\s/g,',')
-												.replace(/,,/g,'')
-												.replace(/,\s*$/,'')
-												.replace(/,*$/, '')
+										.replace(/\"/g,'')
+										.replace(/\'/g,'')
+										.replace(/;/g,',')
+										.replace(/-/g,',')
+										.replace(/\s/g,',')
+										.replace(/,,/g,'')
+										.replace(/,\s*$/,'')
+										.replace(/,*$/, '')
 
 							// field.value = cleanedtags
 							field.setAttribute('value',cleanedtag)
@@ -264,8 +250,6 @@ export const formcorrector = new class FORMCORRECTOR
 							if( !isEmpty(field.value) && !pattern )
 								validity = /^[0-9+]+$/.test(field.value) ? true : false
 
-							console.log("TEL VALUE CHECKS",validity,field.value)
-
 						} else if(istype(field,'checkbox')) {
 
 
@@ -314,7 +298,7 @@ export const formcorrector = new class FORMCORRECTOR
 
 					if ( i==fields.length-1 ) {
 
-						if ( isVariantsPage && form==document.forms[document.forms.length-1] ) {
+						if ( form==document.forms[document.forms.length-1] ) {
 
 							if( !globalstatus.includes('fail') ) {
 
@@ -326,7 +310,7 @@ export const formcorrector = new class FORMCORRECTOR
 
 							} else {
 
-								btnsubmit.value = "RILEVATI ERRORI"
+								btnsubmit.value = "ERROR FOUND IN FORM"
 
 							}
 
@@ -334,7 +318,7 @@ export const formcorrector = new class FORMCORRECTOR
 
 						else if ( formstatus.indexOf("fail")>=0 ) {
 
-							btnsubmit.value = "RILEVATI ERRORI"
+							btnsubmit.value = "ERROR FOUND IN FORM"
 
 						} else {
 
