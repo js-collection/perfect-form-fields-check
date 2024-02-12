@@ -235,7 +235,7 @@ export const formcorrector = new class FORMCORRECTOR
 						
 							// see more = https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
 							if ( !isEmpty(field.value) && !pattern )
-								validity = /^([a-z0-9A-Z]|%|&|#|\.|\!|\?|\$|\_|\-|\=|\*|\(|\)|\{|\}|\[|\]|\\|\/)*$/g.test(field.value) ? true : false
+								validity = /^(\w{6})([a-z0-9A-Z]|%|&|#|\.|\!|\?|\$|\_|\-|\=|\*|\(|\)|\{|\}|\[|\]|\\|\/)*$/g.test(field.value) ? true : false
 						
 						
 						} else if ( istype(field,'email') ) {
